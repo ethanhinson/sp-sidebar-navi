@@ -16,7 +16,7 @@ function sp_sidebar_navi_add_meta() {
     $screens = array( 'page' );
     foreach ($screens as $screen) {
         add_meta_box(
-            'myplugin_sectionid',
+            'sp-sidebar-navi-options',
             __( 'Sidebar Navigation Settings', 'sp_sidebar_navi' ),
             'sp_sidebar_navi_options',
             $screen,
