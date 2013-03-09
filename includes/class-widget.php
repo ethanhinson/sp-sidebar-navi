@@ -21,7 +21,7 @@
             return $instance;
         }
         
-        function display($instance, $obj) {
+        function display($instance, $obj, $before_widget, $before_title, $after_title, $after_widget) {
             
             global $post;
             
