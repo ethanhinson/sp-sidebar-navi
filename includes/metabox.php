@@ -17,7 +17,7 @@ function sp_sidebar_navi_add_meta() {
     foreach ($screens as $screen) {
         add_meta_box(
             'myplugin_sectionid',
-            __( 'Navigation Title', 'sp_sidebar_navi' ),
+            __( 'Sidebar Navigation Settings', 'sp_sidebar_navi' ),
             'sp_sidebar_navi_options',
             $screen,
             'side',
@@ -35,15 +35,29 @@ function sp_sidebar_navi_options( $post ) {
   // The actual fields for data entry
   // Use get_post_meta to retrieve an existing value from the database and use the value for the form
   if( isset($post->ID) && get_post_meta( $post->ID, 'sp_sidebar_navi_title', true ) != '' ) {
-    $value = get_post_meta( $post->ID, 'sp_sidebar_navi_title', true );
+    $title = get_post_meta( $post->ID, 'sp_sidebar_navi_title', true );
   } else {
-      $value = '';   
+    $title = '';   
+  }
+  
+  if( isset($post->ID) && get_post_meta( $post->ID, 'sp_sidebar_navi_label', true ) != '' ) {
+    $label = get_post_meta( $post->ID, 'sp_sidebar_navi_label', true );
+  } else {
+    $label = '';   
   }
   
   echo '<label for="sp_sidebar_navi_title">';
-       _e("Enter a title to use for the navigation widget on this page.", 'sp_sidebar_navi' );
-  echo '</label><br /><br /> ';
-  echo '<input type="text" id="sp_sidebar_navi_title" name="sp_sidebar_navi_title" value="'.esc_attr($value).'" style="width:100%;" />';
+       _e("<strong>Widget Title</strong>", 'sp_sidebar_navi' );
+  echo '</label><br /> ';
+  echo '<input type="text" id="sp_sidebar_navi_title" name="options[sp_sidebar_navi_title]" value="'.esc_attr($title).'" style="width:100%;"/>';
+  echo '<br /><small>Use this field to override the sidebar navigation title when the widget appears on this page.</small>';
+  
+  echo '<br /><br /><label for="sp_sidebar_navi_label">';
+       _e("<strong>Label</strong>", 'sp_sidebar_navi' );
+  echo '</label><br />';
+  echo '<input type="text" id="sp_sidebar_navi_label" name="options[sp_sidebar_navi_label]" value="'.esc_attr($label).'" style="width:100%;" />';
+  echo '<br /><small>If specified, this label will be used when this page appears in a sidebar navigation.</small>';
+
 }
 
 /* When the post is saved, saves our custom data */
@@ -67,10 +81,11 @@ function sp_sidebar_navi_save_meta( $post_id ) {
   //if saving in a custom table, get post_ID
   $post_ID = $_POST['post_ID'];
   //sanitize user input
-  $data = sanitize_text_field( $_POST['sp_sidebar_navi_title'] );
-
-  //Update data
-  update_post_meta($post_ID, 'sp_sidebar_navi_title', $data);
+  foreach($_POST['options'] as $key => $value) {
+    $data = sanitize_text_field( $value );
+    //Update data
+    update_post_meta($post_ID, $key, $data);
+  }
 
 }
 

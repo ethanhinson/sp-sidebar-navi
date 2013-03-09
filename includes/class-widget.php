@@ -41,7 +41,8 @@
             
             print('<ul class="sidebar-navigation-widget widget">');
                 foreach($obj as $o) {
-                    print('<li class="nav-item"><a href="'.get_permalink($o->ID).'">'.get_the_title($o->ID).'</a></li>');
+                    $label = (get_post_meta($o->ID, 'sp_sidebar_navi_label', true ) != '' ? get_post_meta($o->ID, 'sp_sidebar_navi_label', true ) : get_the_title($o->ID) );
+                    print('<li class="nav-item"><a href="'.get_permalink($o->ID).'">'.$label.'</a></li>');
                 }
             print( '</ul>' );
            isset($after_widget) ? print( $after_widget ) : print( '</div>' );
