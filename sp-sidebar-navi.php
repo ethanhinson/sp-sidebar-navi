@@ -1,7 +1,7 @@
 <?php
 /*
     Plugin Name: SmallPress Sidebar Navigation
-    Description: Provides a widget that shows the child pages of this page. Also capable of showing taxonomy information on posts.
+    Description: Provides a widget that shows the child pages of the current page. Includes a metabox to override the widget title or label for the current page.
     Author: Ethan Hinson
     Author URI: http://www.bluetentmarketing.com/
     Version: 0.1
