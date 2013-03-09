@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-//require_once('includes/metabox.php');
+require_once('includes/metabox.php');
 require_once('includes/class-widget.php');  
 
 ?>
