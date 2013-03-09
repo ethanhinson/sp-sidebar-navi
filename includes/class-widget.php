@@ -22,7 +22,14 @@
         }
         
         function display($instance, $obj) {
-            $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+            
+            global $post;
+            
+            if(get_post_meta($post->ID, 'sp_sidebar_navi_title', true) != '') {
+                $title = apply_filters('widget_title', get_post_meta($post->ID, 'sp_sidebar_navi_title', true));
+            } else {
+                $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+            }
 
             isset($before_widget) ? print( $before_widget ) : print( '<div class="widget clearfix">' );
             
