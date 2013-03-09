@@ -50,7 +50,6 @@
         function widget($args, $instance) {
             extract($args, EXTR_SKIP);
             global $post;
-            global $wp_query;
             
             if($post->post_type == 'page') {
             
