@@ -4,7 +4,7 @@
     Description: Provides a widget that shows the child pages of this page. Also capable of showing taxonomy information on posts.
     Author: Ethan Hinson
     Author URI: http://www.bluetentmarketing.com/
-    Version: 1.2.1
+    Version: 0.1
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+//require_once('includes/metabox.php');
 require_once('includes/class-widget.php');  
 
 ?>
