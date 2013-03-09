@@ -24,7 +24,7 @@
         function display($instance, $obj) {
             $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 
-            isset($before_widget) ? print( $before_widget ) : '<div class="widget clearfix">';
+            isset($before_widget) ? print( $before_widget ) : print( '<div class="widget clearfix">' );
             
             if( isset($before_widget) && isset($after_widget) ) {
                 print( $before_title . $title . $after_title );
@@ -37,7 +37,7 @@
                     print('<li class="nav-item"><a href="'.get_permalink($o->ID).'">'.get_the_title($o->ID).'</a></li>');
                 }
             print( '</ul>' );
-           isset($after_widget) ? print( $after_widget ) : '</div>';
+           isset($after_widget) ? print( $after_widget ) : print( '</div>' );
         }
         
         function widget($args, $instance) {
