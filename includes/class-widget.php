@@ -20,7 +20,7 @@
             $instance['title'] = strip_tags($new_instance['title']);
             return $instance;
         }
-        
+        //Render our pages list
         function display($instance, $obj, $before_widget, $before_title, $after_title, $after_widget) {
             
             global $post;
